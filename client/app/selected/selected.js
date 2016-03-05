@@ -5,7 +5,9 @@ angular.module( 'moviematch.selected', [] )
   var category = $location.path().split('/')[2];
 
   var nextScreen = function(){
+    Socket.removeAllListeners("voteAdded");
     $location.path('/selectingOption/movie');
+
   }
 
   //if we just chose genre, wait 2 seconds before moving on to choose movie

@@ -5,8 +5,8 @@
   "main": "./server/server.js",
   "scripts": {
     "start": " bower install && npm install && node server/server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rubiginouschanticleer/rubiginouschanticleer.git"
@@ -38,10 +38,6 @@
     }
   ],
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/rubiginouschanticleer/rubiginouschanticleer/issues"
-  },
-  "homepage": "https://github.com/rubiginouschanticleer/rubiginouschanticleer#readme",
   "dependencies": {
     "angular-mocks": "^1.5.0",
     "body-parser": "^1.15.0",
