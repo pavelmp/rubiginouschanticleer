@@ -4,7 +4,7 @@
   "description": "An app to help you and your friends choose a movie to watch",
   "main": "./server/server.js",
   "scripts": {
-    "start": " bower install && npm install && node server/server.js",
+    "start": " bower install && npm install && node server/server.js"
   },
   
   "repository": {
