@@ -5,7 +5,7 @@ angular.module( 'moviematch.selectingOption', [] )
   
   var category = $location.path().split('/')[2];
   
-  var seconds = 20;
+  var seconds = 15;
   $scope.optionsVotedFor = [];
   $scope.maxNumVotes = 3;
   var votingAllowed = true;
@@ -44,12 +44,17 @@ angular.module( 'moviematch.selectingOption', [] )
 
   var tallyVotes = function(){
     votingAllowed = false;
+    console.log('Got into tally votes');
     setTimeout(function(){
+      console.log('Got into timeout func');
       var winnerArr = Votes.tallyVotes($scope.options);
       if( winnerArr.length === 1 ) { //when there's a winner
+        console.log('There was a winner');
         Session.setSelectedOption(winnerArr[0]);
         $location.path('/selected/'+category);
+
       } else { //when there's a tie
+        console.log('There was a tie');
         $scope.options = winnerArr;
         $scope.optionsVotedFor =[];
         $scope.maxNumVotes = 1;
