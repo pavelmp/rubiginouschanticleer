@@ -44,7 +44,7 @@ angular.module( 'moviematch.selectingOption', [] )
   var tallyVotes = function(){
     votingAllowed = false;
     console.log('Got into tally votes');
-    var tallyTimer = setTimeout(function(){
+    setTimeout(function(){
       console.log('Got into timeout func');
       var winnerArr = Votes.tallyVotes($scope.options);
       if( winnerArr.length === 1 ) { //when there's a winner
@@ -77,9 +77,6 @@ angular.module( 'moviematch.selectingOption', [] )
       if( $scope.counter === 0 ){
         //when the timer reaches zero, make it stop
         $timeout.cancel(countdown);
-        if(tallyTimer){
-          clearTimeout(tallyTimer)
-        }
         tallyVotes();
       }
     }
