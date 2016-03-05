@@ -61,7 +61,7 @@ angular.module( 'moviematch.selectingOption', [] )
         votingAllowed = true;
         setTimer(seconds);
       }
-    },300);
+    },750);
   }
 
   var setTimer = function(seconds){
@@ -97,6 +97,7 @@ angular.module( 'moviematch.selectingOption', [] )
 
   Socket.on( 'voteAdded', function(vote) {
     //update our array of options to reflect the new vote
+    console.log('Vote added',vote.id,new Date());
     $scope.options = Votes.receiveVote(vote.id, $scope.options, vote.addVote);
   });
 

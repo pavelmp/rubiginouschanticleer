@@ -115,6 +115,7 @@ angular.module( 'moviematch.services', [] )
   return {
 
     addVote: function(voteData){
+      console.log('Vote emitted',voteData.id,new Date());
       Socket.emit( 'vote', voteData );
     },
 
