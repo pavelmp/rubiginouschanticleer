@@ -43,20 +43,14 @@ angular.module( 'moviematch.selectingOption', [] )
 
   var tallyVotes = function(){
     votingAllowed = false;
-    console.log('Got into tally votes');
     $timeout(function(){
-      console.log('Got into timeout func');
       var winnerArr = Votes.tallyVotes($scope.options);
       if( winnerArr.length === 1 ) { //when there's a winner
-        console.log('There was a winner');
-        console.log('WinnerArr:', winnerArr[0]);
         Session.setSelectedOption(winnerArr[0]);
-        console.log('Category:', category);
         $window.location.assign('#/selected/'+ category);
         //$location.path('/selected/'+ category);
 
       } else { //when there's a tie
-        console.log('There was a tie');
         $scope.options = winnerArr;
         $scope.optionsVotedFor =[];
         $scope.maxNumVotes = 1;
@@ -67,7 +61,7 @@ angular.module( 'moviematch.selectingOption', [] )
         votingAllowed = true;
         setTimer(seconds);
       }
-    },1000);
+    },300);
   }
 
   var setTimer = function(seconds){
