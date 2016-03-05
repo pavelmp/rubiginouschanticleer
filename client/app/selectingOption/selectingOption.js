@@ -1,7 +1,7 @@
 angular.module( 'moviematch.selectingOption', [] )
 
 
-.controller( 'SelectingOptionController', function( $scope, Votes, Session, Socket, $location, Auth, $routeParams, FetchMovies, $timeout, FetchGenres ) {
+.controller( 'SelectingOptionController', function( $scope, $window, Votes, Session, Socket, $location, Auth, $routeParams, FetchMovies, $timeout, FetchGenres ) {
   
   var category = $location.path().split('/')[2];
   
@@ -52,7 +52,7 @@ angular.module( 'moviematch.selectingOption', [] )
         console.log('WinnerArr:', winnerArr[0]);
         Session.setSelectedOption(winnerArr[0]);
         console.log('Category:', category);
-        $window.location.assign('/selected/'+ category);
+        $window.location.assign('#/selected/'+ category);
         //$location.path('/selected/'+ category);
 
       } else { //when there's a tie
