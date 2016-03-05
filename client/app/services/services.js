@@ -124,7 +124,7 @@ angular.module( 'moviematch.services', [] )
           if(addVote){
             options[i].votes += 1;            
           } else {
-            options[i].votes -= 1;     
+            options[i].votes -= 1;
           }
         }
       }

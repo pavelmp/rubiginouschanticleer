@@ -27,7 +27,7 @@ angular.module( 'moviematch.selectingOption', [] )
           addVote = true;
           $scope.optionsVotedFor.push(option.id);
         } else {
-          return false; //Tell D3 not to highlight the bubble
+          return;
         }
       }
 
@@ -38,20 +38,21 @@ angular.module( 'moviematch.selectingOption', [] )
       };
 
       Votes.addVote(voteDate);
-      return true; //Tell D3 to highlight the bubble
     }
   };
 
   var tallyVotes = function(){
     votingAllowed = false;
     console.log('Got into tally votes');
-    setTimeout(function(){
+    var tallyTimer = setTimeout(function(){
       console.log('Got into timeout func');
       var winnerArr = Votes.tallyVotes($scope.options);
       if( winnerArr.length === 1 ) { //when there's a winner
         console.log('There was a winner');
+        console.log('WinnerArr:', winnerArr[0]);
         Session.setSelectedOption(winnerArr[0]);
-        $location.path('/selected/'+category);
+        console.log('Category:', category);
+        $location.path('/selected/'+ category);
 
       } else { //when there's a tie
         console.log('There was a tie');
@@ -76,6 +77,9 @@ angular.module( 'moviematch.selectingOption', [] )
       if( $scope.counter === 0 ){
         //when the timer reaches zero, make it stop
         $timeout.cancel(countdown);
+        if(tallyTimer){
+          clearTimeout(tallyTimer)
+        }
         tallyVotes();
       }
     }
